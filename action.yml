@@ -1,12 +1,28 @@
 name: 'InfluxDB Action'
 description: 'Install and configure InfluxDB and the InfluxDB CLI.'
 inputs:
-  influxdb-version:
-    description: 'The version of InfluxDB to install.'
+  influxdb-org:
+    description: 'The initial Organization of the InfluxDB instance.'
     required: false
-    default: 'nightly'
+    default: 'organization'
+  influxdb-user:
+    description: 'The initial User of the InfluxDB instance.'
+    required: false
+    default: 'user'
+  influxdb-pass:
+    description: 'The initial Password of the InfluxDB instance.'
+    required: false
+    default: 'password'
+  influxdb-bucket:
+    description: 'The initial Bucket of the InfluxDB instance.'
+    required: false
+    default: 'bucket'
 runs:
   using: "composite"
   steps:
-    - run: ${{ github.action_path }}/setup.sh
+    - name: Download and Install InfluxDB
+      run: ${{ github.action_path }}/install-influxdb.sh
+      shell: bash
+    - name: Configure InfluxDB
+      run: ${{ github.action_path }}/setup-influxdb.sh
       shell: bash
