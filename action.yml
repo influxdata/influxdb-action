@@ -1,21 +1,12 @@
-name: 'Hello World'
-description: 'Greet someone'
+name: 'InfluxDB Action'
+description: 'Install and configure InfluxDB and the InfluxDB CLI.'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Whom to greet'
-    required: true
-    default: 'World'
-outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-id }}
+  influxdb-version:
+    description: 'The version of InfluxDB to install.'
+    required: false
+    default: 'nightly'
 runs:
   using: "composite"
   steps:
-    - run: echo Hello ${{ inputs.who-to-greet }}.
-      shell: bash
-    - id: random-number-generator
-      run: echo "::set-output name=random-id::$(echo $RANDOM)"
-      shell: bash
     - run: ${{ github.action_path }}/setup.sh
       shell: bash
