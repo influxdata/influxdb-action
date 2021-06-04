@@ -1,19 +1,19 @@
 name: 'InfluxDB Action'
 description: 'Install and configure InfluxDB and the InfluxDB CLI.'
 inputs:
-  influxdb-org:
+  influxdb_org:
     description: 'The initial Organization of the InfluxDB instance.'
     required: false
     default: 'organization'
-  influxdb-user:
+  influxdb_user:
     description: 'The initial User of the InfluxDB instance.'
     required: false
     default: 'user'
-  influxdb-pass:
+  influxdb_password:
     description: 'The initial Password of the InfluxDB instance.'
     required: false
     default: 'password'
-  influxdb-bucket:
+  influxdb_bucket:
     description: 'The initial Bucket of the InfluxDB instance.'
     required: false
     default: 'bucket'
