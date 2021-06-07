@@ -30,4 +30,5 @@ runs:
         export INFLUXDB_PASSWORD=${{inputs.influxdb_password}}
         export INFLUXDB_BUCKET=${{inputs.influxdb_bucket}}
         ${{ github.action_path }}/setup-influxdb.sh
+        unset INFLUXDB_PASSWORD
       shell: bash
