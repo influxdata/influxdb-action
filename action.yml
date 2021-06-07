@@ -24,5 +24,7 @@ runs:
       run: ${{ github.action_path }}/install-influxdb.sh
       shell: bash
     - name: Configure InfluxDB
-      run: ${{ github.action_path }}/setup-influxdb.sh
+      run: |
+        echo "INFLUXDB_ORG=${{inputs.influxdb_org}}" >> $GITHUB_ENV
+        ${{ github.action_path }}/setup-influxdb.sh
       shell: bash
