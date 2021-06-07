@@ -1,6 +1,16 @@
 name: 'InfluxDB Action'
 description: 'Install and configure InfluxDB and the InfluxDB CLI.'
+branding:
+  icon: 'database'
+  color: 'gray-dark'
 inputs:
+  influxdb_version:
+    description: 'Sets the version of InfluxDB to use (for example: 2.0.7). See https://portal.influxdata.com/downloads/ for versions. latest and nightly are also supported.'
+    required: true
+  influxdb_start:
+    description: 'Set to false if you only need to use the cli tools without a locally running InfluxDB instance. If this is false, you can ignore the init parameters.'
+    required: false
+    default: true
   influxdb_org:
     description: 'The initial Organization of the InfluxDB instance.'
     required: false
@@ -21,10 +31,13 @@ runs:
   using: "composite"
   steps:
     - name: Download and Install InfluxDB
-      run: ${{ github.action_path }}/install-influxdb.sh
+      run: |
+        export INFLUXDB_VERSION=${{inputs.influxdb_version}}
+        ${{ github.action_path }}/install-influxdb.sh
       shell: bash
     - name: Configure InfluxDB
       run: |
+        export INFLUXDB_START=${{inputs.influxdb_start}}
         export INFLUXDB_ORG=${{inputs.influxdb_org}}
         export INFLUXDB_USER=${{inputs.influxdb_user}}
         export INFLUXDB_PASSWORD=${{inputs.influxdb_password}}
