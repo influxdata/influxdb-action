@@ -25,6 +25,9 @@ runs:
       shell: bash
     - name: Configure InfluxDB
       run: |
-        echo "INFLUXDB_ORG=${{inputs.influxdb_org}}" >> $GITHUB_ENV
+        export INFLUXDB_ORG=${{inputs.influxdb_org}}
+        export INFLUXDB_USER=${{inputs.influxdb_user}}
+        export INFLUXDB_PASSWORD=${{inputs.influxdb_password}}
+        export INFLUXDB_BUCKET=${{inputs.influxdb_bucket}}
         ${{ github.action_path }}/setup-influxdb.sh
       shell: bash
