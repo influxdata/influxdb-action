@@ -1,7 +1,7 @@
 cd /tmp
 if [ "$INFLUXDB_VERSION" = "latest" ];
 then
-  export INFLUXDB_VERSION=$(curl --silent "https://api.github.com/repos/influxdata/influxdb/releases/latest" | jq -r .tag_name | sed -e 's/v//g')
+  export INFLUXDB_VERSION=$(curl --silent "https://api.github.com/repos/influxdata/influxdb/releases" | jq -r '. | sort_by(.tag_name) | reverse[] | .tag_name' | sed -e 's/v//g' | head -n 1)
   export INFLUXDB_DOWNLOAD_PATH="https://dl.influxdata.com/influxdb/releases"
 elif [ "$INFLUXDB_VERSION" = "nightly" ];
 then
