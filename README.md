@@ -12,7 +12,7 @@ See [action.yml](action.yml)
 ```yaml
 steps:
   - name: Check out repo
-    uses: actions/checkout@v3
+    uses: actions/checkout@v2
   - name: Setup InfluxDB
     uses: influxdata/influxdb-action@v4
     with:
@@ -27,7 +27,7 @@ steps:
 ```yaml
 steps:
   - name: Check out repo
-    uses: actions/checkout@v3
+    uses: actions/checkout@v2
   - name: Setup InfluxDB
     uses: influxdata/influxdb-action@v4
     with:
@@ -39,7 +39,7 @@ steps:
 ```yaml
 steps:
   - name: Check out repo
-    uses: actions/checkout@v3
+    uses: actions/checkout@v2
   - name: Setup InfluxDB
     uses: influxdata/influxdb-action@v4
     with:
