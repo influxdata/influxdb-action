@@ -1,4 +1,4 @@
-# InfluxDB Action
+# The InfluxDB Action
 
 This action downloads, installs, and configures an InfluxDB OSS instance and CLI tooling that can be used in your automation.
 
@@ -14,7 +14,7 @@ steps:
   - name: Check out repo
     uses: actions/checkout@v2
   - name: Setup InfluxDB
-    uses: influxdata/influxdb-action@v4
+    uses: maikebing/influxdb-action@v5
     with:
       influxdb_version: latest
       influxdb_org: influxdata
@@ -29,7 +29,7 @@ steps:
   - name: Check out repo
     uses: actions/checkout@v2
   - name: Setup InfluxDB
-    uses: influxdata/influxdb-action@v4
+    uses: maikebing/influxdb-action@v5
     with:
       influxdb_version: latest
       influxdb_start: false
@@ -41,7 +41,7 @@ steps:
   - name: Check out repo
     uses: actions/checkout@v2
   - name: Setup InfluxDB
-    uses: influxdata/influxdb-action@v4
+    uses: maikebing/influxdb-action@v5
     with:
       influxdb_version: 2.0.7
       influxdb_org: influxdata
